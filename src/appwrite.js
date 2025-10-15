@@ -14,10 +14,14 @@ export const updateSearchCount = async (searchTerm, movie) => {
 			tableId: COLLECTION_ID,
 			queries: [Query.equal("searchTerm", searchTerm)],
 		});
-		if (result.rows.length > 0) {
+		if (result.rows?.length > 0) {
 			const doc = result.rows[0];
-			await database.updateSearchCount(DATABASE_ID, COLLECTION_ID, doc.$id, {
-				count: doc.count + 1,
+			await database.incrementRowColumn({
+				databaseId: DATABASE_ID,
+				tableId: COLLECTION_ID,
+				rowId: doc.$id,
+				column: "count",
+				value: 1,
 			});
 		} else {
 			await database.createRow({

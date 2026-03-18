@@ -20,4 +20,5 @@ A movie browsing application built with React and Tailwind CSS.
 1. Clone the repo
 2. npm install
 3. npm start
+   
 [View Live App](https://react-movie-app-two-lac.vercel.app)
